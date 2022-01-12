@@ -10,6 +10,8 @@ HOPPERS_LASERBATTERY_FILL_RATE = ["HOPPERS_LASERBATTERY_FILL_RATE", 0.01] call B
 HOPPERS_LASERBATTERY_DRAIN_RATE = 0.01;
 HOPPERS_BOSS_MARKING_FADEOUT = 20; // time 3d marker and map markers are shown
 
+uiNamespace setVariable ["MELB_FLIRCtrl", 666]; // arbitrary
+
 hoppers_fnc_createCoolDownBar = {
 
     private _text = (uiNamespace getVariable "MELB_FLIRCtrl") ctrlCreate ["RscText", -1];
@@ -114,7 +116,7 @@ private _handle = [{
             _statusBar ctrlsetText ("SCANNING." + selectRandom ["","."] + selectRandom ["","."]);
             uiNamespace setVariable ["hoppers_scanActive", false];
         } else {
-            playSound "rhs_aps_warning";
+            playSound "ace_javelin_locked";
             _vehicle setVariable ["hoppers_laserOverheated", true];
             _statusBar ctrlsetText "OVERHEATED";
         };

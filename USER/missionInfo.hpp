@@ -20,22 +20,22 @@ class cfgMission {
 
 class GRAD_vehicleRespawn {
     class gm_ge_army_bo105p1m_vbh_swooper {
-        customCode = "(_this select 0) addMagazineCargoGlobal ['rhssaf_30rnd_556x45_EPR_G36', 20]; (_this select 0) addMagazineCargoGlobal ['rhs_200rnd_556x45_T_SAW', 20];"; // _this select 0 is the vehicle
+        customCode = "(_this select 0) addMagazineCargoGlobal ['gm_30Rnd_556x45mm_B_DM11_g36_blk', 20]; (_this select 0) addMagazineCargoGlobal ['gm_120Rnd_762x51mm_B_T_DM21_mg3_grn', 20];"; // _this select 0 is the vehicle
     };
 
     class C_Van_02_transport_F {
-        customCode = "(_this select 0) addMagazineCargoGlobal ['rhs_30Rnd_545x39_AK', 20]; (_this select 0) addMagazineCargoGlobal ['rhs_100Rnd_762x54mmR_green', 20];"; // _this select 0 is the vehicle
+        customCode = "(_this select 0) addMagazineCargoGlobal ['gm_30Rnd_545x39mm_B_7N6_ak74_org', 20]; (_this select 0) addMagazineCargoGlobal ['gm_75Rnd_762x39mm_B_57N231_ak47_blk', 20];"; // _this select 0 is the vehicle
     };
 
     class C_Offroad_01_F {
-        customCode = "(_this select 0) addMagazineCargoGlobal ['rhs_30Rnd_545x39_AK', 20]; (_this select 0) addMagazineCargoGlobal ['rhs_100Rnd_762x54mmR_green', 20];"; // _this select 0 is the vehicle
+        customCode = "(_this select 0) addMagazineCargoGlobal ['gm_30Rnd_545x39mm_B_7N6_ak74_org', 20]; (_this select 0) addMagazineCargoGlobal ['gm_75Rnd_762x39mm_B_57N231_ak47_blk', 20];"; // _this select 0 is the vehicle
     };
 
     class C_Van_01_transport_F {
-        customCode = "(_this select 0) addMagazineCargoGlobal ['rhs_30Rnd_545x39_AK', 20]; (_this select 0) addMagazineCargoGlobal ['rhs_100Rnd_762x54mmR_green', 20];"; // _this select 0 is the vehicle
+        customCode = "(_this select 0) addMagazineCargoGlobal ['gm_30Rnd_545x39mm_B_7N6_ak74_org', 20]; (_this select 0) addMagazineCargoGlobal ['gm_75Rnd_762x39mm_B_57N231_ak47_blk', 20];"; // _this select 0 is the vehicle
     };
 
     class C_Offroad_02_unarmed_F {
-        customCode = "(_this select 0) addMagazineCargoGlobal ['rhs_30Rnd_545x39_AK', 20]; (_this select 0) addMagazineCargoGlobal ['rhs_100Rnd_762x54mmR_green', 20];"; // _this select 0 is the vehicle
+        customCode = "(_this select 0) addMagazineCargoGlobal ['gm_30Rnd_545x39mm_B_7N6_ak74_org', 20]; (_this select 0) addMagazineCargoGlobal ['gm_75Rnd_762x39mm_B_57N231_ak47_blk', 20];"; // _this select 0 is the vehicle
     };
 };
