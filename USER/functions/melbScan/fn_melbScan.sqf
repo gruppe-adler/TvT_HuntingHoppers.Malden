@@ -6,15 +6,14 @@
 
 params ["_vehicle"];
 
-HOPPERS_LASERBATTERY_FILL_RATE = ["HOPPERS_LASERBATTERY_FILL_RATE", 0.01] call BIS_fnc_getParamValue;
+HOPPERS_LASERBATTERY_FILL_RATE = ["HOPPERS_LASERBATTERY_FILL_RATE", 0.1] call BIS_fnc_getParamValue;
 HOPPERS_LASERBATTERY_DRAIN_RATE = 0.01;
 HOPPERS_BOSS_MARKING_FADEOUT = 20; // time 3d marker and map markers are shown
 
-uiNamespace setVariable ["MELB_FLIRCtrl", 666]; // arbitrary
 
 hoppers_fnc_createCoolDownBar = {
 
-    private _text = (uiNamespace getVariable "MELB_FLIRCtrl") ctrlCreate ["RscText", -1];
+    private _text = (findDisplay 46) ctrlCreate ["RscText", -1];
     _text ctrlSetPosition [
         (SafezoneX + ((SafezoneW - SafezoneH) / 2)) + 3*   (0.01875 * SafezoneH),
         safeZoneY + (15.3 *   (0.025 * SafezoneH)),
@@ -29,7 +28,7 @@ hoppers_fnc_createCoolDownBar = {
 
 hoppers_fnc_createStatusBar = {
 
-    private _text = (uiNamespace getVariable "MELB_FLIRCtrl") ctrlCreate ["RscText", -1];
+    private _text = (findDisplay 46) ctrlCreate ["RscText", -1];
     _text ctrlSetPosition [
         (SafezoneX + ((SafezoneW - SafezoneH) / 2)) + 3*   (0.01875 * SafezoneH),
         safeZoneY + (14.3 *   (0.025 * SafezoneH)),
@@ -53,14 +52,24 @@ safeZoneX + SafeZoneW + (3*   (0.01875 * SafezoneH)),
 
 */
 
-private _eh = (findDisplay 46) displayAddEventhandler ["MouseButtonUp", {
+private _mouseButtonUp = (findDisplay 46) displayAddEventhandler ["MouseButtonDown", {
     params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
     if (_button == 0) then {
-        uiNamespace setVariable ["hoppers_scanActive", !(uiNamespace getVariable ["hoppers_scanActive", false])];
+        uiNamespace setVariable ["hoppers_scanActive", true];
     };
 }];
 
-player setVariable ["hoppers_clickEH", _eh];
+private _mouseButtonDown = (findDisplay 46) displayAddEventhandler ["MouseButtonUp", {
+    params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
+    if (_button == 0) then {
+        uiNamespace setVariable ["hoppers_scanActive", false];
+        if (vehicle player isKindOf "Air") then {
+            [screenToWorld [0.5,0.5], vehicle player] call hoppers_fnc_melbScanMan;
+        };
+    };
+}];
+
+player setVariable ["hoppers_clickEH", [_mouseButtonUp, _mouseButtonDown]];
 
 private _coolDownBar = call hoppers_fnc_createCoolDownBar;
 private _statusBar = call hoppers_fnc_createStatusBar;
@@ -71,7 +80,7 @@ private _handle = [{
     params ["_args", "_handle"];
     _args params ["_vehicle"];
 
-    (uiNamespace getVariable "MELB_FLIRCtrl" displayCtrl 158) ctrlsetText "";
+    // (findDisplay 46 displayCtrl 158) ctrlsetText "";
 
     private _coolDownBar = uiNamespace getVariable ["hoppers_coolDownBar", controlNull];
     private _statusBar = uiNamespace getVariable ["hoppers_statusBar", controlNull];
@@ -108,13 +117,12 @@ private _handle = [{
 
     private _color = (configfile >> "CfgMarkerColors" >> _armaColor >> "color") call BIS_fnc_colorConfigToRGBA;
 
-    if ((uiNamespace getVariable ["hoppers_scanActive", false]) && !(_vehicle getVariable ["hoppers_laserOverheated", false]) && cameraView == "GUNNER") then {
+    if ((uiNamespace getVariable ["hoppers_scanActive", false]) && !(_vehicle getVariable ["hoppers_laserOverheated", false])) then {
 
         if (_laserBatteryStatus > 0) then {
             _laserBatteryStatus = _laserBatteryStatus - HOPPERS_LASERBATTERY_DRAIN_RATE;
-            [screenToWorld [0.5,0.5], _vehicle] call hoppers_fnc_melbScanMan;
-            _statusBar ctrlsetText ("SCANNING." + selectRandom ["","."] + selectRandom ["","."]);
-            uiNamespace setVariable ["hoppers_scanActive", false];
+            _statusBar ctrlsetText ("CHARGING." + selectRandom ["","."] + selectRandom ["","."]);
+            // uiNamespace setVariable ["hoppers_scanActive", false];
         } else {
             playSound "ace_javelin_locked";
             _vehicle setVariable ["hoppers_laserOverheated", true];
@@ -123,7 +131,7 @@ private _handle = [{
     } else {
         if (_laserBatteryStatus < 1) then {
             _laserBatteryStatus = _laserBatteryStatus + HOPPERS_LASERBATTERY_FILL_RATE;
-            playSound "zoom_fail";
+            playSound "ace_javelin_locking";
             if ((uiNamespace getVariable ["hoppers_scanActive", false])) then {
                 _statusBar ctrlsetText "OVERHEATED";
             } else {
@@ -136,7 +144,7 @@ private _handle = [{
     };
 
     
-    // (uiNamespace getVariable "MELB_FLIRCtrl" displayCtrl 158) ctrlSetTextColor _color;
+    // (findDisplay 46 displayCtrl 158) ctrlSetTextColor _color;
 
     _coolDownBar ctrlsetText _stringCoolDown;
     _coolDownBar ctrlSetTextColor _color;

@@ -1,7 +1,8 @@
 params ["_position", "_vehicle"];
 
 private _locked = false;
-private _targets = nearestObjects [_position, ["Man", "Car"], 200];
+private _size = _vehicle getVariable ["hoppers_laserBattery", 1];
+private _targets = nearestObjects [_position, ["Man", "Car"], _size*500];
 {
     if (side _x == east) then {
         [_x, _vehicle] call hoppers_fnc_melbMarkBoss;
