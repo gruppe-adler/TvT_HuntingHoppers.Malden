@@ -44,10 +44,10 @@ hoppers_fnc_createStatusBar = {
 
 /*
 
-safeZoneX + SafeZoneW + (3*   (0.01875 * SafezoneH)), 
-        safeZoneY + (14.1 *   (0.025 * SafezoneH)), 
-        13 *   (0.01875 * SafezoneH), 
-        2 *   (0.025 * SafezoneH) 
+safeZoneX + SafeZoneW + (3*   (0.01875 * SafezoneH)),
+        safeZoneY + (14.1 *   (0.025 * SafezoneH)),
+        13 *   (0.01875 * SafezoneH),
+        2 *   (0.025 * SafezoneH)
     ]; _text ctrlCommit 0;
 
 */
@@ -56,6 +56,10 @@ private _mouseButtonUp = (findDisplay 46) displayAddEventhandler ["MouseButtonDo
     params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
     if (_button == 0) then {
         uiNamespace setVariable ["hoppers_scanActive", true];
+        private _soundDummy = "HeliHempty" createvehicleLocal position player;
+        _soundDummy attachTo [player, [0, 0, 0.2]];
+        _soundDummy say "scanner_loading";
+        missionNamespace setVariable ["GRAD_GPM_soundLoading", _soundDummy];
     };
 }];
 
@@ -64,6 +68,9 @@ private _mouseButtonDown = (findDisplay 46) displayAddEventhandler ["MouseButton
     if (_button == 0) then {
         uiNamespace setVariable ["hoppers_scanActive", false];
         if (vehicle player isKindOf "Air") then {
+            private _soundDummy = missionNamespace getVariable ["GRAD_GPM_soundLoading", objNull];
+            if (!isNull _soundDummy) then { deleteVehicle _soundDummy; };
+            playSound "scanner_firing";
             [screenToWorld [0.5,0.5], vehicle player] call hoppers_fnc_melbScanMan;
         };
     };
@@ -84,7 +91,7 @@ private _handle = [{
 
     private _coolDownBar = uiNamespace getVariable ["hoppers_coolDownBar", controlNull];
     private _statusBar = uiNamespace getVariable ["hoppers_statusBar", controlNull];
-    
+
     if (isNull _coolDownBar) then {
         _coolDownBar = call hoppers_fnc_createCoolDownBar;
         uiNamespace setVariable ["hoppers_coolDownBar", _coolDownBar];
@@ -137,13 +144,13 @@ private _handle = [{
             } else {
                 _statusBar ctrlsetText "COOLDOWN";
             };
-        } else { 
+        } else {
             _vehicle setVariable ["hoppers_laserOverheated", false];
             _statusBar ctrlsetText "READY";
         };
     };
 
-    
+
     // (findDisplay 46 displayCtrl 158) ctrlSetTextColor _color;
 
     _coolDownBar ctrlsetText _stringCoolDown;
