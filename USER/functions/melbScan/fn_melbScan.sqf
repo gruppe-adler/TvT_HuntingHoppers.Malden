@@ -52,18 +52,16 @@ safeZoneX + SafeZoneW + (3*   (0.01875 * SafezoneH)),
 
 */
 
-private _mouseButtonUp = (findDisplay 46) displayAddEventhandler ["MouseButtonDown", {
+private _mouseButtonDown = (findDisplay 46) displayAddEventhandler ["MouseButtonDown", {
     params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
     if (_button == 0) then {
         uiNamespace setVariable ["hoppers_scanActive", true];
-        private _soundDummy = "HeliHempty" createvehicleLocal position player;
-        _soundDummy attachTo [player, [0, 0, 0.2]];
-        _soundDummy say "scanner_loading";
+        private _soundDummy = playSound "scanner_loading";
         missionNamespace setVariable ["GRAD_GPM_soundLoading", _soundDummy];
     };
 }];
 
-private _mouseButtonDown = (findDisplay 46) displayAddEventhandler ["MouseButtonUp", {
+private _mouseButtonUp = (findDisplay 46) displayAddEventhandler ["MouseButtonUp", {
     params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
     if (_button == 0) then {
         uiNamespace setVariable ["hoppers_scanActive", false];
