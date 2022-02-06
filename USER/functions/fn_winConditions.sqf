@@ -13,7 +13,7 @@
 
   OPFOR_EXTRACTED = false;
   {
-      private _boss = _x;
+      private _exfilPosition = _x;
       if (alive _opforBoss && _opforBoss distance _exfilPosition < 100) then {
           OPFOR_EXTRACTED = true;
       };
@@ -27,7 +27,7 @@
       {
           private _exfilPosition = _x;
           private _taskID = format ["Exfiltrate_%1", _exfilPosition];
-          [_taskID, "FAILED"] call BIS_fnc_taskSetState;
+          [_taskID, "FAILED", _forEachIndex == 0] call BIS_fnc_taskSetState;
       } forEach _exfilPositions;
 
 
@@ -42,7 +42,7 @@
       {
           private _exfilPosition = _x;
           private _taskID = format ["Exfiltrate_%1", _exfilPosition];
-          [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+          [_taskID, "SUCCEEDED", _forEachIndex == 0] call BIS_fnc_taskSetState;
       } forEach _exfilPositions;
 
       east addScoreSide 1337;
@@ -56,7 +56,7 @@
     {
         private _exfilPosition = _x;
         private _taskID = format ["Exfiltrate_%1", _exfilPosition];
-        [_taskID, "SUCCEEDED"] call BIS_fnc_taskSetState;
+        [_taskID, "SUCCEEDED", _forEachIndex == 0] call BIS_fnc_taskSetState;
     } forEach _exfilPositions;
 
     east addScoreSide 1337;
