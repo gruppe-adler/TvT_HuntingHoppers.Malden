@@ -13,13 +13,10 @@
 
   OPFOR_EXTRACTED = false;
   {
-      private _exfilPosition = _x;
-      {
-        private _boss = _x;
-        if (alive _boss && _boss distance _exfilPosition < 100) then {
-            OPFOR_EXTRACTED = true;
-        };
-      } forEach _opforBosses
+      private _boss = _x;
+      if (alive _opforBoss && _opforBoss distance _exfilPosition < 100) then {
+          OPFOR_EXTRACTED = true;
+      };
   } forEach _exfilPositions;
 
   if (OPFOR_ELIMINATED) exitWith {
