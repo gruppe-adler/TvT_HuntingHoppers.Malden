@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={753.1463,63.755901,12227.803};
-		dir[]={-0.30798838,-0.6733849,-0.67208338};
-		up[]={-0.2805315,0.73929203,-0.61216778};
-		aside[]={-0.9090904,1.4901161e-008,0.41659904};
+		pos[]={7246.9082,191.33876,8253.2871};
+		dir[]={-0.5486964,-0.82186532,0.15321259};
+		up[]={-0.79158717,0.56967926,0.22103503};
+		aside[]={0.26894289,8.7340595e-008,0.96315885};
 	};
 };
 binarizationWanted=0;
@@ -5308,7 +5308,7 @@ class Mission
 			name="Template: Spielereinheiten";
 			class Entities
 			{
-				items=19;
+				items=18;
 				class Item0
 				{
 					dataType="Group";
@@ -8194,201 +8194,6 @@ class Mission
 				class Item9
 				{
 					dataType="Group";
-					side="East";
-					class Entities
-					{
-						items=2;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={7234.5762,166.16542,8260.8691};
-							};
-							side="East";
-							flags=7;
-							class Attributes
-							{
-								description="Driver@Dshkm";
-								isPlayable=1;
-							};
-							id=725;
-							type="O_Soldier_TL_F";
-							atlOffset=0.047332764;
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="acex_headless_blacklist";
-									expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"BOOL"
-												};
-											};
-											value=0;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male07ENG";
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.01;
-										};
-									};
-								};
-								nAttributes=3;
-							};
-						};
-						class Item1
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={7233.1221,166.16022,8259.4727};
-								angles[]={0.015998369,0,6.269588};
-							};
-							side="East";
-							flags=4;
-							class Attributes
-							{
-								description="Gunner@Dshkm";
-								isPlayable=1;
-							};
-							id=909;
-							type="O_Soldier_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="acex_headless_blacklist";
-									expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"BOOL"
-												};
-											};
-											value=0;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male09ENG";
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=0.98000002;
-										};
-									};
-								};
-								nAttributes=3;
-							};
-						};
-					};
-					class Attributes
-					{
-					};
-					id=724;
-					atlOffset=0.047332764;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"BOOL"
-										};
-									};
-									value=0;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item10
-				{
-					dataType="Group";
 					side="West";
 					class Entities
 					{
@@ -8823,7 +8628,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item11
+				class Item10
 				{
 					dataType="Group";
 					side="East";
@@ -9249,7 +9054,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item12
+				class Item11
 				{
 					dataType="Group";
 					side="West";
@@ -9686,7 +9491,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item13
+				class Item12
 				{
 					dataType="Group";
 					side="West";
@@ -10123,7 +9928,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item14
+				class Item13
 				{
 					dataType="Group";
 					side="West";
@@ -10560,7 +10365,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item15
+				class Item14
 				{
 					dataType="Group";
 					side="East";
@@ -10986,7 +10791,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item16
+				class Item15
 				{
 					dataType="Group";
 					side="East";
@@ -11415,7 +11220,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item17
+				class Item16
 				{
 					dataType="Group";
 					side="West";
@@ -11852,7 +11657,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item18
+				class Item17
 				{
 					dataType="Group";
 					side="East";
