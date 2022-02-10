@@ -6,6 +6,11 @@ class Header
 	gameType = Team;
 };
 
+// Streamator Loading Instructions
+class CLib {
+    Modules[] = {"CLib", "Streamator"};
+};
+
 
 //MISSION SETTINGS =============================================================
 respawn = 3;

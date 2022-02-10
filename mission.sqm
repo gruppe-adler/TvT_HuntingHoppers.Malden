@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=287;
+		nextID=292;
 	};
 	class Camera
 	{
-		pos[]={7246.9082,191.33876,8253.2871};
-		dir[]={-0.5486964,-0.82186532,0.15321259};
-		up[]={-0.79158717,0.56967926,0.22103503};
-		aside[]={0.26894289,8.7340595e-008,0.96315885};
+		pos[]={1900.4908,150.41937,1964.3308};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -12089,7 +12089,7 @@ class Mission
 				};
 			};
 			id=205;
-			atlOffset=-219.85918;
+			atlOffset=-219.84286;
 		};
 		class Item3
 		{
@@ -13010,7 +13010,7 @@ class Mission
 			type="Select";
 			colorName="ColorRed";
 			id=776;
-			atlOffset=143.35254;
+			atlOffset=147.63;
 		};
 		class Item15
 		{
